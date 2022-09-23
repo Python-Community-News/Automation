@@ -4,6 +4,7 @@ import pathlib
 
 import typer
 from dateutil import parser
+
 from src import newsletter
 from src.engine import engine
 from src.github import Episode
