@@ -1,17 +1,18 @@
+import dataclasses
 import os
 import re
 from collections import defaultdict, namedtuple
-from typing import Any, Sequence, Generator
-import dataclasses
+from typing import Any, Generator, Sequence
+
 import httpx
 from markdown_it import MarkdownIt
 from markdown_it.tree import SyntaxTreeNode
 
 
 def get_content_issues(
-    body: dict[str, Any], 
+    body: dict[str, Any],
     issues_tag: str,
-)  -> list[int]:
+) -> list[int]:
     """
     Returns Issues Passed in sections of the issue body
     """
@@ -35,7 +36,7 @@ def parse_issue_markdown(text) -> dict[str, str]:
             issue_object[issue_key].append(n.children[0].content)
 
     return {key: "\n".join(value) for key, value in issue_object.items()}
-        
+
 
 @dataclasses.dataclass
 class Repo:
@@ -53,7 +54,9 @@ def get_from_github(Repo: Repo, issue_id: int) -> dict[str, str]:
     The issue_id must be a valid integer.
     """
 
-    url = f"https://api.github.com/repos/{Repo.owner}/{Repo.repo}/issues/{str(issue_id)}"
+    url = (
+        f"https://api.github.com/repos/{Repo.owner}/{Repo.repo}/issues/{str(issue_id)}"
+    )
     headers = {
         "Authorization": f"Bearer {os.environ['GITHUB_API_TOKEN']}",
     }
@@ -64,9 +67,11 @@ def get_from_github(Repo: Repo, issue_id: int) -> dict[str, str]:
 
     return request.json()
 
-Issue = namedtuple("Issue", "metadata body") 
 
-def get_issues(issues: Sequence, Repo:Repo) -> Generator[Issue, None, None]:
+Issue = namedtuple("Issue", "metadata body")
+
+
+def get_issues(issues: Sequence, Repo: Repo) -> Generator[Issue, None, None]:
     """Gets issues from the section"""
     for issue in issues:
         issue_content = get_from_github(Repo, issue)
@@ -85,7 +90,13 @@ class Episode:
             setattr(self, key, value)
 
         for field in issue_fields:
-            setattr(self, field, list(get_issues(issues=get_content_issues(self.body, field), Repo=Repo)))
+            setattr(
+                self,
+                field,
+                list(
+                    get_issues(issues=get_content_issues(self.body, field), Repo=Repo)
+                ),
+            )
 
     @property
     def title(self) -> str:

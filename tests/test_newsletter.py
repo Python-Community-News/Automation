@@ -5,8 +5,9 @@ import pathlib
 import httpx
 import pytest
 
-from src.engine import engine
 import src.newsletter as newsletter
+from src.engine import engine
+
 
 def test_shownotes_date_creation(date, time):
     """Given a date and time, return the publish time for the email in datetime format"""

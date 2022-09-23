@@ -3,11 +3,8 @@ import random
 import typing
 
 import pytest
-from src.github import (
-    Repo,
-    Episode,
-    parse_issue_markdown,
-)
+
+from src.github import Episode, Repo, parse_issue_markdown
 
 
 @pytest.fixture(scope="session")
@@ -63,13 +60,14 @@ Aliquip eiusmod minim excepteur officia **tempor** est incididunt adipisicing el
 Laboris anim pariatur nisi mollit. Qui nostrud id ipsum quis mollit aliqua est amet tempor nulla. Aute pariatur ullamco qui consequat anim ad nisi ex sit. Quis officia esse incididunt tempor aliqua quis qui est amet. Nisi nostrud sit ea anim voluptate. Est amet mollit consectetur sit et aliquip pariatur nisi enim. Ex sit enim do culpa consectetur irure est duis minim magna do eiusmod est.
 """
 
+
 class CustomEpisode(Episode):
-    raw:dict = {
+    raw: dict = {
         "title": "Test Episode",
         "created_at": "2022-01-01T00:00:00Z",
     }
 
-    def __init__(self, issue_text:str, issue_fields:typing.Sequence[str]):
+    def __init__(self, issue_text: str, issue_fields: typing.Sequence[str]):
         self.body = parse_issue_markdown(issue_text)
         for key, value in self.body.items():
             setattr(self, key, value)
@@ -78,6 +76,7 @@ class CustomEpisode(Episode):
 @pytest.fixture(scope="session")
 def test_Episode(issue_text):
     return CustomEpisode(issue_text, ["issues"])
+
 
 @pytest.fixture(scope="session")
 def test_repo():

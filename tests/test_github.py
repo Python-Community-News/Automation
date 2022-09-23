@@ -2,11 +2,12 @@ import httpx
 import pytest
 
 from src.github import (
-    get_issues,
-    get_from_github,
     get_content_issues,
+    get_from_github,
+    get_issues,
     parse_issue_markdown,
 )
+
 
 def test_get_issue_passes_correct_url(
     httpx_mock,
@@ -34,7 +35,7 @@ def test_get_issues(
         json={
             "id": 1,
             "body": "",
-            },
+        },
     )
 
     httpx_mock.add_response(
@@ -42,12 +43,13 @@ def test_get_issues(
         json={
             "id": 2,
             "body": "",
-            },
+        },
     )
 
     with httpx.Client() as _:
         for issue in get_issues([1, 2], Repo=test_repo):
             pass
+
 
 def test_issues_markdown_parsing(issue_text):
     """Test the issue text is parsed into segments"""
@@ -66,4 +68,4 @@ def test_empty_issues_creates_issues():
 
 
 def test_valid_issue_returns_issue_list(test_Episode):
-    assert get_content_issues(test_Episode, "issues") == [1,2,3,4]
+    assert get_content_issues(test_Episode, "issues") == [1, 2, 3, 4]
