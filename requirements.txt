@@ -10,7 +10,7 @@ attrs==22.1.0
     # via pytest
 build==0.8.0
     # via pip-tools
-certifi==2022.6.15.1
+certifi==2022.9.14
     # via
     #   httpcore
     #   httpx
@@ -23,8 +23,10 @@ h11==0.12.0
 httpcore==0.15.0
     # via httpx
 httpx==0.23.0
-    # via pytest-httpx
-idna==3.3
+    # via
+    #   -r requirements.in
+    #   pytest-httpx
+idna==3.4
     # via
     #   anyio
     #   rfc3986
@@ -38,6 +40,10 @@ markupsafe==2.1.1
     # via jinja2
 mdurl==0.1.2
     # via markdown-it-py
+mypy==0.971
+    # via -r requirements.in
+mypy-extensions==0.4.3
+    # via mypy
 packaging==21.3
     # via
     #   build
@@ -72,8 +78,11 @@ tomli==2.0.1
     # via
     #   build
     #   coverage
+    #   mypy
     #   pep517
     #   pytest
+typing-extensions==4.3.0
+    # via mypy
 wheel==0.37.1
     # via pip-tools
 

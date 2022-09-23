@@ -1,6 +1,8 @@
+httpx
 jinja2
 markdown-it-py
 pip-tools
 pytest
 pytest-cov
 pytest-httpx
+mypy
