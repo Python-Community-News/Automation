@@ -6,3 +6,5 @@ pip-tools
 pytest
 pytest-cov
 pytest-httpx
+typer
+gh-issues
