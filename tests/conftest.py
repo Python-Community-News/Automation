@@ -1,24 +1,13 @@
 import datetime
-import random
 import typing
 
+import gh_issue
 import pytest
-
-from src.github import Episode, Repo, parse_issue_markdown
 
 
 @pytest.fixture(scope="session")
 def date():
     return datetime.datetime.today()
-
-
-@pytest.fixture(scope="session")
-def time():
-    return datetime.time(
-        hour=random.randint(0, 23),
-        minute=random.randint(0, 59),
-        second=random.randint(0, 59),
-    )
 
 
 @pytest.fixture(scope="session")
@@ -61,7 +50,7 @@ Laboris anim pariatur nisi mollit. Qui nostrud id ipsum quis mollit aliqua est a
 """
 
 
-class CustomEpisode(Episode):
+class CustomEpisode(Issue):
     raw: dict = {
         "title": "Test Episode",
         "created_at": "2022-01-01T00:00:00Z",
@@ -74,10 +63,5 @@ class CustomEpisode(Episode):
 
 
 @pytest.fixture(scope="session")
-def test_Episode(issue_text):
-    return CustomEpisode(issue_text, ["issues"])
-
-
-@pytest.fixture(scope="session")
 def test_repo():
-    return Repo("Python-Community-News", "Topics")
+    return gh_issue.Repo("Python-Community-News", "Topics")
