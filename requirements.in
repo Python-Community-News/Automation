@@ -1,3 +1,4 @@
+gh-issues
 httpx
 jinja2
 markdown-it-py
@@ -7,4 +8,3 @@ pytest
 pytest-cov
 pytest-httpx
 typer
-gh-issues

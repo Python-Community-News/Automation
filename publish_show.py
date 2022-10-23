@@ -1,9 +1,6 @@
 """Script to be ran by GH Actions to build the archive and schedule the newsletter"""
-import pprint
-import pathlib
-from gh_issues import Repo, Issue
 import typer
-from dateutil import parser
+from gh_issues import Issue, Repo
 
 from src import newsletter
 from src.engine import engine
@@ -27,7 +24,6 @@ def main(issue: int):
     """Build the archive and schedule the newsletter"""
     repo = Repo("Python-Community-News", "Topics")
     issue = Issue.from_issue_number(repo=repo, issue_id=issue)
-    # build_website(episode)
     build_newsletter(issue)
 
 
