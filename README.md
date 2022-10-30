@@ -66,4 +66,7 @@ python publish_newsletter.py 1 \
 ```
 
 You can also call the script with the `--help` flag to see all the options.
-![](assets/publish_newsletter_help.png)
+
+`python publish_newsletter.py --help`
+
+![output for `python publish_newsletter.py --help`](assets/publish_newsletter_help.png)
