@@ -25,9 +25,7 @@ def build_newsletter(issue: Issue) -> dict[str, str]:
 
 def main(
     issue_number: int = typer.Argument(
-        ...,
-        rich_help_panel="GitHub Information",
-        help="Issue number to publish"
+        ..., rich_help_panel="GitHub Information", help="Issue number to publish"
     ),
     github_account: str = typer.Option(
         "...",
