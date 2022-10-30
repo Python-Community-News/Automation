@@ -7,4 +7,4 @@ Please review the [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 TODO: #1 Add contributing guide
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE)
