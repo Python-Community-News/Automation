@@ -25,4 +25,4 @@ def build_email_from_content(
         headers=header,
         json=body,
     )
-    return request.json()
+    return request
