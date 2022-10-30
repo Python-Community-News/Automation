@@ -9,7 +9,7 @@ This project adheres to the standards highlighted in the [organization repo](htt
 ## Usage
 ### 1. Get a [buttondown](https://buttondown.email/) account and api key.
 
-Visit the [buttondown](https://buttondown.email/) website and create an account. Once you have an account. Setup your newsletter. 
+Visit the [buttondown](https://buttondown.email/) website and create an account. Once you have an account. Setup your newsletter.
 ### 2. Create a template of this repo
 
 There is a create template button on the top right of this repo. Click it and follow the instructions to create a template of this repo in your own account.
@@ -41,7 +41,7 @@ You will need the following information:
 
 - `GITHUB_API_TOKEN` - Your github api token. You can create one in your GitHub account settings in the Developer Settings section. If you have one, you can use it to increase the rate limit of the GitHub API. You can read more about the GitHub API rate limit [here](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
 
-```bash 
+```bash
 export BUTTONDOWN_API_KEY=<your_api_key>
 export GITHUB_ACCOUNT=<your_github_account>
 export GITHUB_REPO=<your_github_repo>
@@ -58,8 +58,8 @@ python publish_newsletter.py 1 # replace 1 with the issue number you want to pub
 Alternatively, if you don't wish to store your values in the environment you can pass the values directly into `publish_newsletter.py`.
 
 ```bash
-python publish_newsletter.py 1 \ 
---buttondown_api_key=<your_api_key> \ 
+python publish_newsletter.py 1 \
+--buttondown_api_key=<your_api_key> \
 --github_account=<your_github_account> \
 --github_repo=<your_github_repo> \
 --github_api=<your_github_api_token>
