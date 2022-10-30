@@ -30,6 +30,7 @@ def main(
         help="Issue number to publish"
     ),
     github_account: str = typer.Option(
+        "...",
         "--github-account",
         "-a",
         envvar="GITHUB_ACCOUNT",
@@ -37,6 +38,7 @@ def main(
         help="The GitHub account to use",
     ),
     github_repo: str = typer.Option(
+        "...",
         "--github-repo",
         "-r",
         envvar="GITHUB_REPO",
@@ -44,12 +46,14 @@ def main(
         help="The GitHub repo to use",
     ),
     github_api: str = typer.Option(
+        None,
         "--github-api",
         envvar="GITHUB_API_TOKEN",
         rich_help_panel="GitHub Information",
         help="The GitHub API token to use",
     ),
     buttondown_api: str = typer.Option(
+        "...",
         "--buttondown-api",
         envvar="BUTTONDOWN_API_TOKEN",
         rich_help_panel="Buttondown Information",
