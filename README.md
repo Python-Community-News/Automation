@@ -40,23 +40,25 @@ You will need the following information:
 ### Optional Values
 
 - `GITHUB_API_TOKEN` - Your github api token. You can create one in your GitHub account settings in the Developer Settings section. If you have one, you can use it to increase the rate limit of the GitHub API. You can read more about the GitHub API rate limit [here](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
-    
-Run the `publish_show.py` with the issue number
 
-```bash
+```bash 
 export BUTTONDOWN_API_KEY=<your_api_key>
 export GITHUB_ACCOUNT=<your_github_account>
 export GITHUB_REPO=<your_github_repo>
 export GITHUB_API_TOKEN=<your_github_api_token>
+```
 
-python publish_show.py 1 # replace 1 with the issue number you want to publish
+## Run the `publish_newsletter.py` with the issue number
+
+```bash
+python publish_newsletter.py 1 # replace 1 with the issue number you want to publish
 
 ```
 
-Alternatively, you can pass the values as arguments to the script.
+Alternatively, if you don't wish to store your values in the environment you can pass the values directly into `publish_newsletter.py`.
 
 ```bash
-python publish_show.py 1 \ 
+python publish_newsletter.py 1 \ 
 --buttondown_api_key=<your_api_key> \ 
 --github_account=<your_github_account> \
 --github_repo=<your_github_repo> \
@@ -64,4 +66,4 @@ python publish_show.py 1 \
 ```
 
 You can also call the script with the `--help` flag to see all the options.
-![](assets/publish_show_help.png)
+![](assets/publish_newsletter_help.png)
