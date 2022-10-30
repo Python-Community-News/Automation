@@ -5,12 +5,8 @@ import pathlib
 import httpx
 import pytest
 
+import src.newsletter as newsletter
 from src.engine import engine
-from src.newsletter import (
-    build_email_from_content,
-    get_publish_time,
-    schedule_email_from_post,
-)
 
 
 def test_shownotes_date_creation(date, time):

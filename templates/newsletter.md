@@ -1,23 +1,16 @@
 ## Topics
-{% for issue in issues %}
-### {{issue.metadata.title}}
+{% for issue in issue.get_content_issues('issues') %}
+### {{issue.title}}
 
-<small>Submitted by: [{{issue.metadata.user.login}}]({{issue.metadata.user.url}}) on {{issue.metadata.created_at}}</small>
+<small>Submitted by: [{{issue._user.login}}]({{issue._user.url}}) on {{issue._created_at|datetime_format}}</small>
 
-{{issue.body.summary}}
-{% endfor %}
-
-## Upcoming Events
-### CFPs
-
-{% for cfp in cfps %}
-* [{{cfp.body.conference_name}}]({{cfp.body.url}})] (Ends: {{cfp.body.cfp_dates}})
+{{issue.summary}}
 {% endfor %}
 
 ### Conferences
 
-{% for conf in conferences %}
-* [{{conf.body.conference_name}}]({{conf.body.url}})] - {{conf.conference_dates}}
+{% for conf in issue.get_content_issues('conferences') %}
+* [{{conf.conference_name}}]({{conf.url}})
 {% endfor %}
 
 

@@ -1,6 +1,8 @@
+gh-issues
+httpx
 jinja2
-markdown-it-py
-pip-tools
+mypy
 pytest
 pytest-cov
 pytest-httpx
+typer
