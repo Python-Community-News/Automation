@@ -9,7 +9,7 @@ from src import newsletter
 from src.engine import engine
 
 
-def build_newsletter(issue: Issue) -> dict[str, str]:
+def build_newsletter(issue: Issue, buttondown_api: str) -> dict[str, str]:
     """Build the newsletter from a GitHub Issue"""
     template = engine.get_template("newsletter.md")
     content = template.render(issue=issue)
@@ -20,7 +20,7 @@ def build_newsletter(issue: Issue) -> dict[str, str]:
         publish_date=issue.newsletter_publish,
     )
 
-    return newsletter.build_email_from_content(shownotes)
+    return newsletter.build_email_from_content(shownotes, buttondown_api)
 
 
 def main(
@@ -60,8 +60,8 @@ def main(
 ) -> HTTPResponse:
     """Build the archive and schedule the newsletter"""
     repo = Repo(github_account, github_repo)
-    issue = Issue.from_issue_number(repo=repo, issue_id=issue)
-    return build_newsletter(issue)
+    issue = Issue.from_issue_number(repo=repo, issue_number=issue_number)
+    return build_newsletter(issue, buttondown_api)
 
 
 if __name__ == "__main__":

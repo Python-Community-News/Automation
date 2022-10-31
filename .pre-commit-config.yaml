@@ -31,7 +31,6 @@ repos:
       - id: pip-compile
         name: Compile Python requirements
 
-
       - id: pip-compile
         name: Upgrade Python dependencies
         stages: [manual]
