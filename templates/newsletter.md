@@ -15,7 +15,7 @@
 
 
 ### Watch the VOD on Youtube:
-https://youtube.com/watch/{{youtube}}
+https://youtube.com/watch/{{issue.youtube}}
 
 ### Take the content on the road with you!
-https://transistor.fm/s/{{podcast}}
+https://share.transistor.fm/s/{{issue.podcast}}
