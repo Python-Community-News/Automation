@@ -23,4 +23,5 @@ jobs:
           GITHUB_REPO: 'topics'
           GITHUB_API_TOKEN: ${{secrets.PAT_TOKEN}}
           ISSUE_NUMBER: ${{github.event.client-payload.issue_number}}
-        run: python publish_newsletter.py $ISSUE_NUMBER
+        run: |
+          python publish_newsletter.py $ISSUE_NUMBER
