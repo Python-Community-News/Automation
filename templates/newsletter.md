@@ -12,7 +12,7 @@ https://youtube.com/watch/{{issue.youtube}}
 
 ### Around the Community
 
-Get news from the community by subscribing to our YouTube Channel.
+Get news from the community by subscribing to our [YouTube Channel](youtube.com/@pycommunitynews).
 
 {% for topic in shorts %}
 ### {{topic.title}}
