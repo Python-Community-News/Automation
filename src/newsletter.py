@@ -2,7 +2,7 @@ from collections import namedtuple
 
 import httpx
 
-schedule_email_url: str = "https://api.buttondown.email/v1/scheduled-emails"
+schedule_email_url: str = "https://api.buttondown.email/v1/emails"
 Shownotes = namedtuple("Shownotes", "subject content publish_date")
 
 
