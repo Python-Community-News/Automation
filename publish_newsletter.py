@@ -8,6 +8,9 @@ from gh_issues import Issue, Repo
 from src import newsletter
 from src.engine import engine
 
+# disable pretty exceptions showing locals due to keys
+app = typer.Typer(pretty_exceptions_show_locals=False)
+
 
 def build_newsletter(issue: Issue, buttondown_api: str) -> dict[str, str]:
     """Build the newsletter from a GitHub Issue"""
@@ -23,6 +26,7 @@ def build_newsletter(issue: Issue, buttondown_api: str) -> dict[str, str]:
     return newsletter.build_email_from_content(shownotes, buttondown_api)
 
 
+@app.command()
 def main(
     issue_number: int = typer.Argument(
         ..., rich_help_panel="GitHub Information", help="Issue number to publish"
@@ -44,7 +48,7 @@ def main(
         help="The GitHub repo to use",
     ),
     github_api: str = typer.Option(
-        None,
+        "...",
         "--github-api",
         envvar="GITHUB_API_TOKEN",
         rich_help_panel="GitHub Information",
@@ -60,9 +64,9 @@ def main(
 ) -> HTTPResponse:
     """Build the archive and schedule the newsletter"""
     repo = Repo(github_account, github_repo)
-    issue = Issue.from_issue_number(repo=repo, issue_number=issue_number)
+    issue = Issue.from_issue_number(repo, issue_number, github_api)
     return build_newsletter(issue, buttondown_api)
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    app()
