@@ -8,13 +8,14 @@
 {% endfor %}
 
 You can share your thoughts on this topic by watching this week's Python Community News Extra!
+
 https://youtube.com/watch/{{issue.youtube}}
 
 ### Around the Community
 
 Get news from the community by subscribing to our [YouTube Channel](youtube.com/@pycommunitynews).
 
-{% for topic in shorts %}
+{% for topic in issue.get_content_issues('shorts') %}
 ### {{topic.title}}
 
 <small>Submitted by: [{{topic._user.login}}]({{topic._user.url}}) on {{topic._created_at|datetime_format}}</small>
